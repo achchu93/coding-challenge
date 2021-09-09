@@ -88,7 +88,7 @@ class Block {
 						$post_type_object->labels->name
 					) : sprintf(
 						/* translators: %s: Post Type */
-						esc_html__( 'There is no Posts for %s', 'site-count' ),
+						esc_html__( 'There is no Posts for %s', 'site-counts' ),
 						$post_type_object->labels->name
 					);
 					?>
