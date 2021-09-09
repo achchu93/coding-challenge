@@ -71,25 +71,24 @@ class Block {
 		?>
 		<div class="<?php echo esc_attr( $attributes['classname'] ); ?>">
 			<h2><?php esc_html__( 'Post Counts', 'site-counts' ); ?></h2>
-			<?php
-			foreach ( $post_types as $post_type_slug ) :
-				$post_type_object = get_post_type_object( $post_type_slug );
-				$post_count       = count(
-					get_posts(
-						[
-							'post_type'      => $post_type_slug,
-							'posts_per_page' => -1,
-						]
-					)
-				);
-
-				?>
+			<?php foreach ( $post_types as $post_type_slug ) : ?>
 				<p>
 					<?php
-					echo sprintf(
+					$post_type_object = get_post_type_object( $post_type_slug );
+					$post_count       = wp_count_posts( $post_type_slug );
+					echo $post_count->publish > 0 ? sprintf(
 						/* translators: 1: Post Count 2: Post Type */
-						esc_html__( 'There are %1$d %2$s', 'site-counts' ),
-						$post_count,
+						_n(
+							'There is %1$d %2$s',
+							'There are %1$d %2$s',
+							intval( $post_count->publish ),
+							'site-counts'
+						),
+						$post_count->publish,
+						$post_type_object->labels->name
+					) : sprintf(
+						/* translators: %s: Post Type */
+						esc_html__( 'There is no Posts for %s', 'site-count' ),
 						$post_type_object->labels->name
 					);
 					?>
