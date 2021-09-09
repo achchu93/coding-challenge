@@ -85,7 +85,7 @@ class Block {
 							'site-counts'
 						),
 						$post_count->publish,
-						$post_type_object->labels->name
+						$post_count->publish > 1 ? $post_type_object->labels->name : $post_type_object->labels->singular_name
 					) : sprintf(
 						/* translators: %s: Post Type */
 						esc_html__( 'There is no Posts for %s', 'site-counts' ),
