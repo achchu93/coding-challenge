@@ -70,7 +70,7 @@ class Block {
 
 		?>
 		<div class="<?php echo esc_attr( $attributes['className'] ); ?>">
-			<h2><?php esc_html__( 'Post Counts', 'site-counts' ); ?></h2>
+			<h2><?php echo esc_html__( 'Post Counts', 'site-counts' ); ?></h2>
 			<?php foreach ( $post_types as $post_type_slug ) : ?>
 				<p>
 					<?php
