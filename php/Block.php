@@ -65,11 +65,11 @@ class Block {
 		global $post;
 
 		$post_types = get_post_types( [ 'public' => true ] );
-		$attributes = wp_parse_args( $attributes, [ 'classname' => '' ] );
+		$attributes = wp_parse_args( $attributes, [ 'className' => '' ] );
 		ob_start();
 
 		?>
-		<div class="<?php echo esc_attr( $attributes['classname'] ); ?>">
+		<div class="<?php echo esc_attr( $attributes['className'] ); ?>">
 			<h2><?php esc_html__( 'Post Counts', 'site-counts' ); ?></h2>
 			<?php foreach ( $post_types as $post_type_slug ) : ?>
 				<p>
